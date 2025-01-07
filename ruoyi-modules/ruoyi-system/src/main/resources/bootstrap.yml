@@ -14,12 +14,14 @@ spring:
     nacos:
       discovery:
         # 服务注册地址
-        server-addr: 1.94.253.73:8848
+        server-addr: 10.10.70.97:8848
+        namespace: 453b3c02-5120-42e0-bbf5-8ab54e26e789
         username: nacos
         password: cnmngdxB999!~!
       config:
         # 配置中心地址
-        server-addr: 1.94.253.73:8848
+        server-addr: 10.10.70.97:8848
+        namespace: 453b3c02-5120-42e0-bbf5-8ab54e26e789
         username: nacos
         password: cnmngdxB999!~!
         # 配置文件格式
