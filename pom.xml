@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ruoyi</groupId>
-    <artifactId>ruoyi</artifactId>
+    <artifactId>smart-customs-platform-cloud</artifactId>
     <version>3.6.5</version>
 
     <name>ruoyi</name>
     <url>http://www.ruoyi.vip</url>
-    <description>若依微服务系统</description>
+    <description>智慧关务平台-微服务版</description>
 
     <properties>
         <ruoyi.version>3.6.5</ruoyi.version>
