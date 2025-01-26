@@ -1,2 +1,2 @@
-# intelligent-customs-platform-cloud
-An intelligent customs platform
+# smart-customs-platform-cloud
+An smart customs platform
