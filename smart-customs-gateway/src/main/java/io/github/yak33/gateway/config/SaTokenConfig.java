@@ -1,7 +1,9 @@
 package io.github.yak33.gateway.config;
 
+import cn.dev33.satoken.jwt.StpLogicJwtForSimple;
 import cn.dev33.satoken.reactor.filter.SaReactorFilter;
 import cn.dev33.satoken.router.SaRouter;
+import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +17,15 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class SaTokenConfig {
+
+    /**
+     * Sa-Token 整合 JWT (简单模式)
+     * 与 System 服务保持一致
+     */
+    @Bean
+    public StpLogic getStpLogicJwt() {
+        return new StpLogicJwtForSimple();
+    }
 
     @Bean
     public SaReactorFilter getSaReactorFilter() {

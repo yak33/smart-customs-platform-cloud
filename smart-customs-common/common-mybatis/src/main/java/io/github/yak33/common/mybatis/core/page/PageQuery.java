@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.beans.ConstructorProperties;
 import io.github.yak33.common.core.exception.ServiceException;
 import io.github.yak33.common.core.utils.StringUtils;
 import io.github.yak33.common.core.utils.sql.SqlUtil;
@@ -21,6 +24,7 @@ import java.util.List;
  * @author ZHANGCHAO
  */
 @Data
+@NoArgsConstructor
 public class PageQuery implements Serializable {
 
     @Serial
@@ -119,6 +123,13 @@ public class PageQuery implements Serializable {
         return (pageNum - 1) * pageSize;
     }
 
+    /**
+     * 两参数构造函数
+     *
+     * @param pageSize 分页大小
+     * @param pageNum  当前页数
+     */
+    @ConstructorProperties({"pageSize", "pageNum"})
     public PageQuery(Integer pageSize, Integer pageNum) {
         this.pageSize = pageSize;
         this.pageNum = pageNum;

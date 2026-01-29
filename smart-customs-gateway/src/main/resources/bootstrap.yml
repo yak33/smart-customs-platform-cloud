@@ -25,3 +25,5 @@ spring:
     import:
       # 加载共享配置，个性化配置使用本地 application.yml
       - optional:nacos:application-common.yml?group=@nacos.group@&refreshEnabled=true
+      - optional:nacos:smart-customs-gateway.yml?group=@nacos.group@&refreshEnabled=true
+

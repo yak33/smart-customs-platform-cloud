@@ -1,0 +1,46 @@
+# ============================================================
+# Gateway 路由配置 (Nacos DataId: smart-customs-gateway.yml)
+# ============================================================
+
+spring:
+  cloud:
+    gateway:
+      # 服务发现路由
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+      # 路由配置
+      routes:
+        # 系统服务 - 认证相关
+        - id: smart-customs-system-auth
+          uri: lb://smart-customs-system
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=0
+
+        # 系统服务
+        - id: smart-customs-system
+          uri: lb://smart-customs-system
+          predicates:
+            - Path=/system/**,/resource/**,/tool/**,/monitor/**
+          filters:
+            - StripPrefix=0
+
+        # 代码生成服务
+        - id: smart-customs-generator
+          uri: lb://smart-customs-system
+          predicates:
+            - Path=/code/**
+          filters:
+            - StripPrefix=0
+
+        # 业务服务 (统一前缀 /business/**)
+        - id: smart-customs-business
+          uri: lb://smart-customs-business
+          predicates:
+            - Path=/business/**
+          filters:
+            - StripPrefix=1

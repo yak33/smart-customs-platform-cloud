@@ -69,6 +69,8 @@ redisson:
 # ============================================================
 sa-token:
   token-name: Authorization
+  token-prefix: Bearer
+  is-read-header: true
   is-concurrent: true
   is-share: false
   jwt-secret-key: abcdefghijklmnopqrstuvwxyz

@@ -31,7 +31,7 @@ import io.github.yak33.common.mybatis.core.page.TableDataInfo;
 @Validated
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/business/goods")
+@RequestMapping("/goods")
 public class GoodsPnController extends BaseController {
 
     private final IGoodsPnService goodsPnService;

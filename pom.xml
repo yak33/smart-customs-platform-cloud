@@ -21,7 +21,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Spring Boot 版本 (供子模块插件引用) -->
-        <spring-boot.version>3.5.9</spring-boot.version>
+        <spring-boot.version>3.4.2</spring-boot.version>
+        <!-- 注解处理器版本 -->
+        <lombok.version>1.18.40</lombok.version>
+        <mapstruct-plus.version>1.5.0</mapstruct-plus.version>
     </properties>
     
     <modules>

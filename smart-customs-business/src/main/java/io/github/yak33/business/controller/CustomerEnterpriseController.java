@@ -31,7 +31,7 @@ import io.github.yak33.common.mybatis.core.page.TableDataInfo;
 @Validated
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/business/enterprise")
+@RequestMapping("/enterprise")
 public class CustomerEnterpriseController extends BaseController {
 
     private final ICustomerEnterpriseService customerEnterpriseService;
