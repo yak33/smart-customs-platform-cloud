@@ -1,0 +1,48 @@
+# ============================================================
+# Business 服务个性化配置
+# 共享配置(数据库/Redis/Sa-Token/日志等)来自 Nacos: application-common.yml
+# ============================================================
+
+server:
+  port: 9202
+
+spring:
+  # 服务配置
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      indent_output: false
+      fail_on_empty_beans: false
+    deserialization:
+      fail_on_unknown_properties: false
+  # OpenFeign 配置
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: basic
+
+# SpringDoc 接口文档配置
+springdoc:
+  api-docs:
+    enabled: true
+  info:
+    title: '智慧关务平台 - 业务服务接口文档'
+    description: '客户企业、海关参数、业务数据等接口'
+    version: '${revision}'
+    contact:
+      name: ZHANGCHAO
+      email: vuanne1@gmail.com
+  group-configs:
+    - group: 1.业务模块
+      packages-to-scan: io.github.yak33.business

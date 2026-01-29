@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>io.github.yak33</groupId>
+        <artifactId>smart-customs-platform-cloud</artifactId>
+        <version>${revision}</version>
+    </parent>
+    
+    <artifactId>smart-customs-common</artifactId>
+    <packaging>pom</packaging>
+    
+    <name>smart-customs-common</name>
+    <description>智慧关务平台 - 公共模块</description>
+    
+    <modules>
+        <module>common-core</module>
+        <module>common-redis</module>
+        <module>common-mybatis</module>
+        <module>common-satoken</module>
+        <module>common-web</module>
+        <module>common-doc</module>
+        <module>common-log</module>
+        <module>common-excel</module>
+        <module>common-json</module>
+        <module>common-security</module>
+        <module>common-tenant</module>
+        <module>common-translation</module>
+        <module>common-encrypt</module>
+        <module>common-idempotent</module>
+        <module>common-ratelimiter</module>
+        <module>common-oss</module>
+        <module>common-mail</module>
+        <module>common-sms</module>
+        <module>common-social</module>
+        <module>common-sensitive</module>
+        <module>common-websocket</module>
+        <module>common-sse</module>
+    </modules>
+
+</project>

@@ -1,0 +1,44 @@
+# ============================================================
+# System 服务个性化配置
+# 共享配置(数据库/Redis/Sa-Token/日志等)来自 Nacos: application-common.yml
+# ============================================================
+
+server:
+  port: 9201
+
+spring:
+  # 服务配置
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+  mvc:
+    static-path-pattern: /static/**
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      indent_output: false
+      fail_on_empty_beans: false
+    deserialization:
+      fail_on_unknown_properties: false
+
+# SpringDoc 接口文档配置
+springdoc:
+  api-docs:
+    enabled: true
+  info:
+    title: '智慧关务平台 - 系统服务接口文档'
+    description: '系统管理、用户权限、代码生成等接口'
+    version: '${revision}'
+    contact:
+      name: ZHANGCHAO
+      email: vuanne1@gmail.com
+  group-configs:
+    - group: 1.通用模块
+      packages-to-scan: io.github.yak33.web
+    - group: 2.系统模块
+      packages-to-scan: io.github.yak33.system
+    - group: 3.代码生成模块
+      packages-to-scan: io.github.yak33.generator

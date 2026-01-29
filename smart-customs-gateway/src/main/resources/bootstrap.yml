@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: smart-customs-gateway
+
+  cloud:
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      # 配置中心
+      config:
+        enabled: @nacos.config.enabled@
+        server-addr: @nacos.server@
+        namespace: @nacos.namespace@
+        group: @nacos.group@
+        file-extension: yml
+      # 服务发现
+      discovery:
+        enabled: @nacos.discovery.enabled@
+        server-addr: @nacos.server@
+        namespace: @nacos.namespace@
+        group: @nacos.group@
+        ip: ${SERVICE_IP:}
+
+  config:
+    import:
+      # 加载共享配置，个性化配置使用本地 application.yml
+      - optional:nacos:application-common.yml?group=@nacos.group@&refreshEnabled=true

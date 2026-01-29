@@ -1,0 +1,227 @@
+# ============================================================
+# Nacos 共享配置文件
+# Data ID: application-common.yml
+# Group: SMART_CUSTOMS_GROUP
+# 
+# 此文件包含所有微服务模块的公共配置
+# 请在 Nacos 配置中心创建此配置
+# ============================================================
+
+# ============================================================
+# 数据源配置
+# ============================================================
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    dynamic:
+      # 性能分析插件(有性能损耗 不建议生产环境使用)
+      p6spy: ${P6SPY_ENABLED:false}
+      # 设置默认的数据源或者数据源组
+      primary: master
+      # 严格模式 匹配不到数据源则报错
+      strict: true
+      datasource:
+        master:
+          type: ${spring.datasource.type}
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://${DB_HOST:10.10.10.164}:${DB_PORT:33066}/${DB_NAME:smart-customs-platform}?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&autoReconnect=true&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+          username: ${DB_USER:root}
+          password: ${DB_PASSWORD:2020jieguan2023}
+      hikari:
+        maxPoolSize: 20
+        minIdle: 10
+        connectionTimeout: 30000
+        validationTimeout: 5000
+        idleTimeout: 600000
+        maxLifetime: 1800000
+        keepaliveTime: 30000
+
+  # ============================================================
+  # Redis 配置
+  # ============================================================
+  data:
+    redis:
+      host: ${REDIS_HOST:10.10.10.164}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_DB:8}
+      # password: ${REDIS_PASSWORD:}
+      timeout: 10s
+      ssl:
+        enabled: false
+
+# ============================================================
+# Redisson 配置
+# ============================================================
+redisson:
+  keyPrefix:
+  threads: 4
+  nettyThreads: 8
+  singleServerConfig:
+    clientName: smart-customs-platform
+    connectionMinimumIdleSize: 8
+    connectionPoolSize: 32
+    idleConnectionTimeout: 10000
+    timeout: 3000
+    subscriptionConnectionPoolSize: 50
+
+# ============================================================
+# Sa-Token 配置
+# ============================================================
+sa-token:
+  token-name: Authorization
+  is-concurrent: true
+  is-share: false
+  jwt-secret-key: abcdefghijklmnopqrstuvwxyz
+
+# ============================================================
+# MyBatis-Plus 配置
+# ============================================================
+mybatis-plus:
+  enableLogicDelete: true
+  mapperPackage: io.github.yak33.**.mapper
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  typeAliasesPackage: io.github.yak33.**.domain
+  global-config:
+    dbConfig:
+      idType: ASSIGN_ID
+
+# ============================================================
+# 多租户配置
+# ============================================================
+tenant:
+  enable: true
+  excludes:
+    - sys_menu
+    - sys_tenant
+    - sys_tenant_package
+    - sys_role_dept
+    - sys_role_menu
+    - sys_user_post
+    - sys_user_role
+    - sys_client
+    - sys_oss_config
+    - erp_china_ports
+    - erp_cityports
+    - erp_countries
+    - erp_currencies
+    - erp_hscode
+    - erp_customs_ports
+    - erp_units
+    - customer_enterprise
+
+# ============================================================
+# 日志配置
+# ============================================================
+logging:
+  level:
+    io.github.yak33: ${LOG_LEVEL:debug}
+    org.springframework: warn
+    org.mybatis.spring.mapper: error
+    org.apache.fury: warn
+
+# ============================================================
+# 用户配置
+# ============================================================
+user:
+  password:
+    maxRetryCount: 5
+    lockTime: 10
+
+# ============================================================
+# 验证码配置
+# ============================================================
+captcha:
+  enable: true
+  type: MATH
+  category: CIRCLE
+  numberLength: 1
+  charLength: 4
+
+# ============================================================
+# 安全配置
+# ============================================================
+security:
+  excludes:
+    - /*.html
+    - /**/*.html
+    - /**/*.css
+    - /**/*.js
+    - /favicon.ico
+    - /error
+    - /*/api-docs
+    - /*/api-docs/**
+
+# ============================================================
+# API 加密配置
+# ============================================================
+api-decrypt:
+  enabled: true
+  headerFlag: encrypt-key
+  publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJnNwrj4hi/y3CCJu868ghCG5dUj8wZK++RNlTLcXoMmdZWEQ/u02RgD5LyLAXGjLOjbMtC+/J9qofpSGTKSx/MCAwEAAQ==
+  privateKey: MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAqhHyZfSsYourNxaY7Nt+PrgrxkiA50efORdI5U5lsW79MmFnusUA355oaSXcLhu5xxB38SMSyP2KvuKNPuH3owIDAQABAkAfoiLyL+Z4lf4Myxk6xUDgLaWGximj20CUf+5BKKnlrK+Ed8gAkM0HqoTt2UZwA5E2MzS4EI2gjfQhz5X28uqxAiEA3wNFxfrCZlSZHb0gn2zDpWowcSxQAgiCstxGUoOqlW8CIQDDOerGKH5OmCJ4Z21v+F25WaHYPxCFMvwxpcw99EcvDQIgIdhDTIqD2jfYjPTY8Jj3EDGPbH2HHuffvflECt3Ek60CIQCFRlCkHpi7hthhYhovyloRYsM+IS9h/0BzlEAuO0ktMQIgSPT3aFAgJYwKpqRYKlLDVcflZFCKY7u3UP8iWi1Qw0Y=
+
+# ============================================================
+# 数据加密配置
+# ============================================================
+mybatis-encryptor:
+  enable: false
+  algorithm: BASE64
+  encode: BASE64
+
+# ============================================================
+# 分布式锁配置
+# ============================================================
+lock4j:
+  acquire-timeout: 3000
+  expire: 30000
+
+# ============================================================
+# XSS 防护配置
+# ============================================================
+xss:
+  enabled: true
+  excludeUrls:
+    - /system/notice
+
+# ============================================================
+# 邮件配置
+# ============================================================
+mail:
+  enabled: true
+  host: imap.qq.com
+  port: 993
+  auth: true
+  from: woaimamaa@foxmail.com
+  user: woaimamaa
+  pass: sswaammauesujefd
+  starttlsEnable: true
+  sslEnable: true
+  timeout: 0
+  connectionTimeout: 0
+
+# ============================================================
+# SSE 推送配置
+# ============================================================
+sse:
+  enabled: true
+  path: /resource/sse
+
+# ============================================================
+# WebSocket 配置
+# ============================================================
+websocket:
+  enabled: false
+  path: /resource/websocket
+  allowedOrigins: '*'
+
+# ============================================================
+# Actuator 监控配置
+# ============================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
