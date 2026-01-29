@@ -32,6 +32,20 @@ spring:
             readTimeout: 5000
             loggerLevel: basic
 
+# MyBatis-Plus 配置
+mybatis-plus:
+  configuration:
+    # 打印 SQL 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志配置
+logging:
+  level:
+    # MyBatis Mapper 日志级别
+    io.github.yak33.business.mapper: debug
+    # SQL 日志
+    com.baomidou.mybatisplus: debug
+
 # SpringDoc 接口文档配置
 springdoc:
   api-docs:

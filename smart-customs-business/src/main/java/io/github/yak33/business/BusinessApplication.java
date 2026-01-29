@@ -20,6 +20,5 @@ public class BusinessApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(BusinessApplication.class, args);
-        System.out.println("(♥◠‿◠)ノ゙  业务服务启动成功   ლ(´ڡ`ლ)゙");
     }
 }

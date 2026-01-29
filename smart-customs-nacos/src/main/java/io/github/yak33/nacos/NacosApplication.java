@@ -17,6 +17,7 @@
 package io.github.yak33.nacos;
 
 import com.alibaba.nacos.sys.filter.NacosTypeExcludeFilter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,6 +36,7 @@ import org.springframework.context.annotation.FilterType;
  *
  * @author ZHANGCHAO
  */
+@Slf4j
 @SpringBootApplication
 @ComponentScan(basePackages = "com.alibaba.nacos", excludeFilters = {
     @Filter(type = FilterType.CUSTOM, classes = {NacosTypeExcludeFilter.class}),
@@ -50,6 +52,31 @@ public class NacosApplication {
         // 本地集群搭建：在各 nacos 目录下创建 conf/cluster.conf 文件
         // 注意：本地启动多个 nacos 时，home 目录不能相同
         // System.setProperty("nacos.home", "D:/nacos");
+        
         SpringApplication.run(NacosApplication.class, args);
+        
+        printStartupBanner();
+    }
+    
+    /**
+     * 打印启动信息
+     */
+    private static void printStartupBanner() {
+        String mode = "true".equals(System.getProperty("nacos.standalone", "false")) ? "单机模式" : "集群模式";
+        String banner = "\n\n"
+            + "===============================================================================\n"
+            + "  _   _                     \n"
+            + " | \\ | | __ _  ___ ___  ___ \n"
+            + " |  \\| |/ _` |/ __/ _ \\/ __|\n"
+            + " | |\\  | (_| | (_| (_) \\__ \\\n"
+            + " |_| \\_|\\__,_|\\___\\___/|___/\n"
+            + "                            \n"
+            + "-------------------------------------------------------------------------------\n"
+            + "  🚀 智慧关务-Nacos服务 (" + mode + ") 启动成功!\n"
+            + "-------------------------------------------------------------------------------\n"
+            + "  🌐 控制台访问: http://localhost:8848/nacos\n"
+            + "  🔑 默认账号:     nacos / nacos\n"
+            + "===============================================================================\n";
+        log.info(banner);
     }
 }

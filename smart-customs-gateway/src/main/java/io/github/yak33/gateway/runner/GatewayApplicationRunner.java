@@ -1,7 +1,6 @@
-package io.github.yak33.system.runner;
+package io.github.yak33.gateway.runner;
 
 import io.github.yak33.common.core.utils.ApplicationStartupBanner;
-import io.github.yak33.system.service.ISysOssConfigService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -12,32 +11,26 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 /**
- * 初始化 system 模块对应业务数据
+ * 网关服务启动后处理
  *
  * @author ZHANGCHAO
  */
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class SystemApplicationRunner implements ApplicationRunner {
+public class GatewayApplicationRunner implements ApplicationRunner {
 
-    private final ISysOssConfigService ossConfigService;
     private final Environment environment;
     private final LocalDateTime startTime = LocalDateTime.now();
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        // 初始化业务配置
-        ossConfigService.init();
-        log.info("初始化OSS配置成功");
-        
         // 打印启动信息
         ApplicationStartupBanner.printStartupBanner(
             environment, 
-            "智慧关务-系统服务", 
+            "智慧关务-网关服务", 
             startTime,
-            ApplicationStartupBanner.getSystemAscii()
+            ApplicationStartupBanner.getGatewayAscii()
         );
     }
-
 }

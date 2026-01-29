@@ -16,6 +16,5 @@ public class GatewayApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
-        System.out.println("(♥◠‿◠)ノ゙  智慧关务网关启动成功   ლ(´ڡ`ლ)゙");
     }
 }

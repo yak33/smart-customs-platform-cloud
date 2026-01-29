@@ -24,6 +24,21 @@ spring:
     deserialization:
       fail_on_unknown_properties: false
 
+# MyBatis-Plus 配置
+mybatis-plus:
+  configuration:
+    # 打印 SQL 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志配置
+logging:
+  level:
+    # MyBatis Mapper 日志级别
+    io.github.yak33.system.mapper: debug
+    io.github.yak33.generator.mapper: debug
+    # SQL 日志
+    com.baomidou.mybatisplus: debug
+
 # SpringDoc 接口文档配置
 springdoc:
   api-docs:
