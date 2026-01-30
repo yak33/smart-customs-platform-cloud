@@ -1,0 +1,114 @@
+# ============================================================================
+# 智慧关务平台 - Docker Compose 编排文件
+# Author: ZHANGCHAO
+# ============================================================================
+
+services:
+  # Nacos 注册/配置中心
+  nacos:
+    container_name: smart-customs-nacos
+    build:
+      context: ./smart-customs-nacos
+      dockerfile: Dockerfile
+    image: smart-customs-nacos:latest
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 8848:8848
+      - 9848:9848
+      - 9849:9849
+    networks:
+      - smart-customs-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://nacos:8848/nacos/v1/console/health/readiness"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # API 网关服务
+  gateway:
+    container_name: smart-customs-gateway
+    build:
+      context: ./smart-customs-gateway
+      dockerfile: Dockerfile
+    image: smart-customs-gateway:latest
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 9999:9999
+    depends_on:
+      nacos:
+        condition: service_healthy
+    networks:
+      - smart-customs-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://gateway:9999/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # 系统管理服务
+  system:
+    container_name: smart-customs-system
+    build:
+      context: ./smart-customs-system
+      dockerfile: Dockerfile
+    image: smart-customs-system:latest
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 9201:9201
+    depends_on:
+      nacos:
+        condition: service_healthy
+    networks:
+      - smart-customs-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://system:9201/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # 业务服务
+  business:
+    container_name: smart-customs-business
+    build:
+      context: ./smart-customs-business
+      dockerfile: Dockerfile
+    image: smart-customs-business:latest
+    environment:
+      - TZ=Asia/Shanghai
+      - LANG=zh_CN.UTF-8
+      - LC_ALL=zh_CN.UTF-8
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 9202:9202
+    depends_on:
+      nacos:
+        condition: service_healthy
+    networks:
+      - smart-customs-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://business:9202/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  smart-customs-network:
+    external: true
