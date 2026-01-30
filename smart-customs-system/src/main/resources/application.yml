@@ -7,6 +7,10 @@ server:
   port: 9201
 
 spring:
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
   # 服务配置
   servlet:
     multipart:

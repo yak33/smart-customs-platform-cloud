@@ -200,6 +200,18 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <!-- 排除二进制文件，防止过滤时损坏 -->
+                <excludes>
+                    <exclude>**/*.xdb</exclude>
+                </excludes>
+            </resource>
+            <!-- 单独处理二进制文件，不进行过滤 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.xdb</include>
+                </includes>
             </resource>
         </resources>
         <plugins>
