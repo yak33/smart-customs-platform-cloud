@@ -29,10 +29,8 @@
     
     <modules>
         <module>smart-customs-dependencies</module>
-        <module>smart-customs-common</module>
-        <module>smart-customs-api</module>
-		<module>smart-customs-nacos</module>
-        <module>smart-customs-gateway</module>
+        <module>smart-customs-support</module>
+        <module>smart-customs-infrastructure</module>
         <module>smart-customs-system</module>
         <module>smart-customs-business</module>
     </modules>

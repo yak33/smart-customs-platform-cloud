@@ -35,22 +35,24 @@
 smart-customs-platform-cloud/
 ├── pom.xml                           # 父 POM
 ├── smart-customs-dependencies/       # 依赖管理 BOM
-├── smart-customs-common/             # 公共模块 (22 个子模块)
-│   ├── common-core/                  # 核心工具类
-│   ├── common-redis/                 # Redis 工具
-│   ├── common-mybatis/               # MyBatis-Plus 配置
-│   ├── common-satoken/               # Sa-Token 集成
-│   ├── common-web/                   # Web 相关
-│   ├── common-security/              # 安全模块
-│   ├── common-tenant/                # 多租户支持
-│   └── ...                           # 其他公共模块
-├── smart-customs-api/                # 服务间接口定义
-│   ├── system-api/                   # 系统服务 Feign 客户端
-│   └── business-api/                 # 业务服务 Feign 客户端
-├── smart-customs-gateway/            # API 网关服务
+├── smart-customs-support/            # 支撑代码模块
+│   ├── smart-customs-common/         # 公共模块 (22 个子模块)
+│   │   ├── common-core/              # 核心工具类
+│   │   ├── common-redis/             # Redis 工具
+│   │   ├── common-mybatis/           # MyBatis-Plus 配置
+│   │   ├── common-satoken/           # Sa-Token 集成
+│   │   ├── common-web/               # Web 相关
+│   │   ├── common-security/          # 安全模块
+│   │   ├── common-tenant/            # 多租户支持
+│   │   └── ...                       # 其他公共模块
+│   └── smart-customs-api/            # 服务间接口定义
+│       ├── system-api/               # 系统服务 Feign 客户端
+│       └── business-api/             # 业务服务 Feign 客户端
+├── smart-customs-infrastructure/     # 基础设施服务
+│   ├── smart-customs-gateway/        # API 网关服务
+│   └── smart-customs-nacos/          # Nacos 服务 (嵌入式)
 ├── smart-customs-system/             # 系统管理服务
-├── smart-customs-business/           # 业务核心服务
-└── smart-customs-nacos/              # Nacos 服务 (嵌入式)
+└── smart-customs-business/           # 业务核心服务
 ```
 
 ---
@@ -105,10 +107,10 @@ mvn clean compile -DskipTests
 
 ```bash
 # 0. 启动 Nacos 服务（嵌入式，子模块方式）
-mvn spring-boot:run -pl smart-customs-nacos
+mvn spring-boot:run -pl smart-customs-infrastructure/smart-customs-nacos
 
 # 1. 启动 Gateway（新终端）
-mvn spring-boot:run -pl smart-customs-gateway
+mvn spring-boot:run -pl smart-customs-infrastructure/smart-customs-gateway
 
 # 2. 启动 System 服务（新终端）
 mvn spring-boot:run -pl smart-customs-system
@@ -124,8 +126,8 @@ mvn spring-boot:run -pl smart-customs-business
 mvn clean package -DskipTests
 
 # 启动
-java -jar smart-customs-nacos/target/smart-customs-nacos.jar
-java -jar smart-customs-gateway/target/smart-customs-gateway.jar
+java -jar smart-customs-infrastructure/smart-customs-nacos/target/smart-customs-nacos.jar
+java -jar smart-customs-infrastructure/smart-customs-gateway/target/smart-customs-gateway.jar
 java -jar smart-customs-system/target/smart-customs-system.jar
 java -jar smart-customs-business/target/smart-customs-business.jar
 ```

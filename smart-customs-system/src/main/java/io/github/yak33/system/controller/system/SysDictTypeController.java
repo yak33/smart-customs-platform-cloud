@@ -20,6 +20,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
+import io.github.yak33.common.core.domain.dto.DictDataDTO;
+import io.github.yak33.common.core.domain.dto.DictTypeDTO;
+import io.github.yak33.common.core.service.DictService;
 
 /**
  * 数据字典信息
@@ -127,5 +132,54 @@ public class SysDictTypeController extends BaseController {
     public R<List<SysDictTypeVo>> optionselect() {
         List<SysDictTypeVo> dictTypes = dictTypeService.selectDictTypeAll();
         return R.ok(dictTypes);
+    }
+
+    /**
+     * 根据字典类型和字典值获取字典标签（Feign调用）
+     */
+    @GetMapping("/label")
+    public R<String> getDictLabel(@RequestParam String dictType,
+                                  @RequestParam String dictValue,
+                                  @RequestParam String separator) {
+        DictService dictService = (DictService) dictTypeService;
+        return R.ok(dictService.getDictLabel(dictType, dictValue, separator));
+    }
+
+    /**
+     * 根据字典类型和字典标签获取字典值（Feign调用）
+     */
+    @GetMapping("/value")
+    public R<String> getDictValue(@RequestParam String dictType,
+                                  @RequestParam String dictLabel,
+                                  @RequestParam String separator) {
+        DictService dictService = (DictService) dictTypeService;
+        return R.ok(dictService.getDictValue(dictType, dictLabel, separator));
+    }
+
+    /**
+     * 获取字典下所有的字典值与标签（Feign调用）
+     */
+    @GetMapping("/map/{dictType}")
+    public R<Map<String, String>> getAllDictByDictType(@PathVariable String dictType) {
+        DictService dictService = (DictService) dictTypeService;
+        return R.ok(dictService.getAllDictByDictType(dictType));
+    }
+
+    /**
+     * 根据字典类型查询详细信息（Feign调用）
+     */
+    @GetMapping("/info/{dictType}")
+    public R<DictTypeDTO> getDictType(@PathVariable String dictType) {
+        DictService dictService = (DictService) dictTypeService;
+        return R.ok(dictService.getDictType(dictType));
+    }
+
+    /**
+     * 根据字典类型查询字典数据列表（Feign调用）
+     */
+    @GetMapping("/data/type/{dictType}")
+    public R<List<DictDataDTO>> getDictData(@PathVariable String dictType) {
+        DictService dictService = (DictService) dictTypeService;
+        return R.ok(dictService.getDictData(dictType));
     }
 }

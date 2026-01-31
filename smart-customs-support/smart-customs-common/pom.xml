@@ -7,8 +7,9 @@
     
     <parent>
         <groupId>io.github.yak33</groupId>
-        <artifactId>smart-customs-platform-cloud</artifactId>
+        <artifactId>smart-customs-support</artifactId>
         <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     
     <artifactId>smart-customs-common</artifactId>

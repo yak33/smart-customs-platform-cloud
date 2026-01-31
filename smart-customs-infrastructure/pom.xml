@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>io.github.yak33</groupId>
+        <artifactId>smart-customs-platform-cloud</artifactId>
+        <version>${revision}</version>
+    </parent>
+    
+    <artifactId>smart-customs-infrastructure</artifactId>
+    <packaging>pom</packaging>
+    
+    <name>smart-customs-infrastructure</name>
+    <description>智慧关务平台 - 基础设施服务</description>
+    
+    <modules>
+        <module>smart-customs-gateway</module>
+        <module>smart-customs-nacos</module>
+    </modules>
+
+</project>

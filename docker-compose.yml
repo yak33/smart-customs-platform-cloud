@@ -8,7 +8,7 @@ services:
   nacos:
     container_name: smart-customs-nacos
     build:
-      context: ./smart-customs-nacos
+      context: ./smart-customs-infrastructure/smart-customs-nacos
       dockerfile: Dockerfile
     image: smart-customs-nacos:latest
     environment:
@@ -33,7 +33,7 @@ services:
   gateway:
     container_name: smart-customs-gateway
     build:
-      context: ./smart-customs-gateway
+      context: ./smart-customs-infrastructure/smart-customs-gateway
       dockerfile: Dockerfile
     image: smart-customs-gateway:latest
     environment:

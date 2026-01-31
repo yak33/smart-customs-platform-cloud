@@ -11,15 +11,15 @@
         <version>${revision}</version>
     </parent>
     
-    <artifactId>smart-customs-api</artifactId>
+    <artifactId>smart-customs-support</artifactId>
     <packaging>pom</packaging>
     
-    <name>smart-customs-api</name>
-    <description>智慧关务平台 - 服务间接口定义</description>
+    <name>smart-customs-support</name>
+    <description>智慧关务平台 - 支撑代码模块</description>
     
     <modules>
-        <module>system-api</module>
-        <module>business-api</module>
+        <module>smart-customs-common</module>
+        <module>smart-customs-api</module>
     </modules>
 
 </project>
