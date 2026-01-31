@@ -124,10 +124,26 @@ tenant:
 # ============================================================
 logging:
   level:
-    io.github.yak33: ${LOG_LEVEL:debug}
-    org.springframework: warn
-    org.mybatis.spring.mapper: error
+    root: INFO
+    io:
+      github:
+        yak33:
+          business:
+            mapper: DEBUG
+          system:
+            mapper: DEBUG
+    # MyBatis-Plus SQL 日志
+    com.baomidou.mybatisplus: debug
+    # MyBatis SQL 日志（如果使用标准 MyBatis）
+    org.apache.ibatis: debug
     org.apache.fury: warn
+    com.zaxxer.hikari: warn
+    org.redisson: warn
+    io.lettuce: warn
+    # Nacos 客户端日志
+    com.alibaba.nacos: warn
+    # Logback 配置过程日志
+    ch.qos.logback: warn
 
 # ============================================================
 # 用户配置

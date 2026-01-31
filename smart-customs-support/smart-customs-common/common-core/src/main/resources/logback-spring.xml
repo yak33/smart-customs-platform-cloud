@@ -123,6 +123,13 @@
         <appender-ref ref="ALL_FILE"/>
     </appender>
     
+    <!-- ==================== 框架内部日志级别控制 ==================== -->
+    <logger name="ch.qos.logback" level="WARN"/>
+    <logger name="com.alibaba.nacos" level="WARN"/>
+    <!-- MyBatis-Plus SQL 日志 -->
+    <logger name="com.baomidou.mybatisplus" level="DEBUG"/>
+    <logger name="org.apache.ibatis" level="DEBUG"/>
+    
     <!-- ==================== 开发环境 ==================== -->
     <springProfile name="dev,default">
         <root level="INFO">
