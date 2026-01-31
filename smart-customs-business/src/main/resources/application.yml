@@ -31,32 +31,3 @@ spring:
             connectTimeout: 5000
             readTimeout: 5000
             loggerLevel: basic
-
-# MyBatis-Plus 配置
-mybatis-plus:
-  configuration:
-    # 打印 SQL 日志
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-# 日志配置
-logging:
-  level:
-    # MyBatis Mapper 日志级别
-    io.github.yak33.business.mapper: debug
-    # SQL 日志
-    com.baomidou.mybatisplus: debug
-
-# SpringDoc 接口文档配置
-springdoc:
-  api-docs:
-    enabled: true
-  info:
-    title: '智慧关务平台 - 业务服务接口文档'
-    description: '客户企业、海关参数、业务数据等接口'
-    version: '${revision}'
-    contact:
-      name: ZHANGCHAO
-      email: vuanne1@gmail.com
-  group-configs:
-    - group: 1.业务模块
-      packages-to-scan: io.github.yak33.business

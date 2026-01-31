@@ -5,11 +5,3 @@
 
 server:
   port: 9999
-
-# 路由与发现配置已迁移至 Nacos (smart-customs-gateway.yml)
-
-# Gateway 日志级别
-logging:
-  level:
-    io.github.yak33.gateway: debug
-    org.springframework.cloud.gateway: info

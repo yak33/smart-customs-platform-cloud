@@ -26,13 +26,6 @@
                 <version>${revision}</version>
             </dependency>
 
-            <!-- 接口模块 -->
-            <dependency>
-                <groupId>io.github.yak33</groupId>
-                <artifactId>common-doc</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
             <!-- excel -->
             <dependency>
                 <groupId>io.github.yak33</groupId>

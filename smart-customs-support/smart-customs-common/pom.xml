@@ -24,7 +24,6 @@
         <module>common-mybatis</module>
         <module>common-satoken</module>
         <module>common-web</module>
-        <module>common-doc</module>
         <module>common-log</module>
         <module>common-excel</module>
         <module>common-json</module>

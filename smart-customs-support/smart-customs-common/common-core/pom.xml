@@ -95,6 +95,12 @@
             <artifactId>ip2region</artifactId>
         </dependency>
 
+        <!-- JetBrains Annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

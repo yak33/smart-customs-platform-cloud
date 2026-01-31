@@ -87,10 +87,6 @@
         </dependency>
         <dependency>
             <groupId>io.github.yak33</groupId>
-            <artifactId>common-doc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.yak33</groupId>
             <artifactId>common-excel</artifactId>
         </dependency>
         <dependency>

@@ -28,12 +28,6 @@ spring:
     deserialization:
       fail_on_unknown_properties: false
 
-# MyBatis-Plus 配置
-mybatis-plus:
-  configuration:
-    # 打印 SQL 日志
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
 # 日志配置
 logging:
   level:
@@ -42,22 +36,3 @@ logging:
     io.github.yak33.generator.mapper: debug
     # SQL 日志
     com.baomidou.mybatisplus: debug
-
-# SpringDoc 接口文档配置
-springdoc:
-  api-docs:
-    enabled: true
-  info:
-    title: '智慧关务平台 - 系统服务接口文档'
-    description: '系统管理、用户权限、代码生成等接口'
-    version: '${revision}'
-    contact:
-      name: ZHANGCHAO
-      email: vuanne1@gmail.com
-  group-configs:
-    - group: 1.通用模块
-      packages-to-scan: io.github.yak33.web
-    - group: 2.系统模块
-      packages-to-scan: io.github.yak33.system
-    - group: 3.代码生成模块
-      packages-to-scan: io.github.yak33.generator
