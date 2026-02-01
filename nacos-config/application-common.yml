@@ -128,6 +128,12 @@ logging:
     io:
       github:
         yak33:
+          # Gateway 请求日志
+          gateway:
+            filter:
+              RequestLoggingFilter: INFO
+              DetailedLoggingFilter: DEBUG
+          # SQL Mapper 日志
           business:
             mapper: DEBUG
           system:
@@ -144,6 +150,14 @@ logging:
     com.alibaba.nacos: warn
     # Logback 配置过程日志
     ch.qos.logback: warn
+
+# ============================================================
+# Gateway 日志配置（仅 Gateway 服务生效）
+# ============================================================
+gateway:
+  logging:
+    # 详细日志开关（仅开发环境开启，打印请求/响应体）
+    detailed: false
 
 # ============================================================
 # 用户配置

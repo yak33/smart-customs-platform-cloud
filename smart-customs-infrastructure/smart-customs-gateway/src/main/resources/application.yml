@@ -5,3 +5,26 @@
 
 server:
   port: 9999
+
+# ============================================================
+# 日志配置
+# ============================================================
+logging:
+  level:
+    # Gateway 请求日志级别
+    io.github.yak33.gateway.filter.RequestLoggingFilter: INFO
+    # 详细日志（开发环境可设为 DEBUG）
+    io.github.yak33.gateway.filter.DetailedLoggingFilter: DEBUG
+    # Spring Cloud Gateway 原生日志
+    org.springframework.cloud.gateway: INFO
+    reactor.netty: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+# ============================================================
+# Gateway 自定义配置
+# ============================================================
+gateway:
+  logging:
+    # 详细日志开关（仅开发环境开启，打印请求/响应体）
+    detailed: false
