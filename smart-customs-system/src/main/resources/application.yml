@@ -27,12 +27,3 @@ spring:
       fail_on_empty_beans: false
     deserialization:
       fail_on_unknown_properties: false
-
-# 日志配置
-logging:
-  level:
-    # MyBatis Mapper 日志级别
-    io.github.yak33.system.mapper: debug
-    io.github.yak33.generator.mapper: debug
-    # SQL 日志
-    com.baomidou.mybatisplus: debug
